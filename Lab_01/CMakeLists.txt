@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(SDL2 REQUIRED)
 
-add_executable(lab_01 src/main.cpp)
+add_executable(lab_01 src/main.cpp src/impl/Point_impl.cpp src/impl/SDL_functions_impl.cpp)
 
 target_link_libraries(lab_01 ${SDL2_LIBRARIES})
 
