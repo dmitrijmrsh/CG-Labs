@@ -62,7 +62,7 @@ int main(int argc, char* argv[]) {
     float scale = 1.0f;
     float rotation = 0.0f;
     float distance = 2.0f;
-    float scaleChangeFor = 1.0f;
+    float scaleChangeFor = 0.1f;
 
     bool rotate = false;
     bool scaleUp = false;
@@ -186,7 +186,6 @@ int main(int argc, char* argv[]) {
         }
 
         if (scaleUp) {
-            std::cout << currentRadius << " " << scale << std::endl;
             if (
                 center.getX() + radius * (scale + scaleChangeFor) <= WINDOW_WIDTH
                 && center.getX() - radius * (scale + scaleChangeFor) >= 0.0f
