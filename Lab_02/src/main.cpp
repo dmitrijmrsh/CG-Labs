@@ -100,9 +100,10 @@ void drawNormals() {
     glEnd();
 }
 
-void rotateCube(float angleX, float angleY) {
+void rotateCube(float angleX, float angleY, float angleZ) {
     glRotatef(angleX, 1.0f, 0.0f, 0.0f);
     glRotatef(angleY, 0.0f, 1.0f, 0.0f);
+    glRotatef(angleZ, 0.0f, 0.0f, 1.0f);
 }
 
 int main() {
@@ -124,7 +125,7 @@ int main() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    float angleX = 0.0f, angleY = 0.0f, cubePositionZ = -5.0f;
+    float angleX = 0.0f, angleY = 0.0f, angleZ = 0.0f, cubePositionZ = -5.0f;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -150,6 +151,14 @@ int main() {
             angleX += 1.0f;
         }
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
+            angleZ += 1.0f;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt)) {
+            angleZ -= 1.0f;
+        }
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
             cubePositionZ -= 0.1f;
         }
@@ -163,7 +172,7 @@ int main() {
         glLoadIdentity();
         glTranslatef(0.0f, 0.0f, cubePositionZ);
 
-        rotateCube(angleX, angleY);
+        rotateCube(angleX, angleY, angleZ);
 
         drawCube();
         drawEdges();
